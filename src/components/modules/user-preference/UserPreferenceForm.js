@@ -49,7 +49,7 @@ const UserPreferenceForm = () => {
 
     return (
         <>
-            {initialValues !== null ? (
+            {initialValues !== null && (
                 <Form {...layout} ref={formRef} initialValues={initialValues} name="control-ref" onFinish={handleSubmit}>
                     <Row gutter={32}>
                         <Col span={6}>
@@ -86,7 +86,7 @@ const UserPreferenceForm = () => {
                         </Button>
                     </Form.Item>
                 </Form>
-            ) : <Skeleton />}
+            )}
         </>
     )
 }
