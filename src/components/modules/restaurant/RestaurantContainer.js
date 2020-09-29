@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {getData} from "../../../api/api";
 import {RECOMMEND_URL} from "../../../api/api-url-consts";
+import {showErrorNotification} from "../../../util/notifications";
 
 import RestaurantList from "./RestaurantList";
 import RestaurantDetail from "./RestaurantDetail";
 
+//TODO - Filtro
 const RestaurantContainer = () => {
 
     const [LIST, DETAIL] = ['LIST', 'DETAIL'];
@@ -16,7 +18,10 @@ const RestaurantContainer = () => {
     useEffect(() => {
         getData(RECOMMEND_URL + '?params=[10,false,10,20,15,null,null]')
             .then(result => setDataset(result.data))
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                showErrorNotification('Error on Load Restaurants', 'Please try again');
+            });
     }, []);
 
     const toggleVisualization = () => setVisualization(visualization => visualization === LIST ? DETAIL : LIST);
