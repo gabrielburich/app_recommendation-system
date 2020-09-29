@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Button, Col, Form, InputNumber, Row, Skeleton} from "antd";
+import {Button, Col, Form, InputNumber, Row} from "antd";
 import {getData} from "../../../api/api";
 import {USER_PREFERENCE_URL} from "../../../api/api-url-consts";
 import {showErrorNotification} from "../../../util/notifications";
