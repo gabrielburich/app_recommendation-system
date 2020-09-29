@@ -3,6 +3,7 @@ import {Redirect, Route, Switch} from "react-router";
 import {useStoreState} from "easy-peasy";
 
 import RestaurantContainer from "@modules/restaurant/RestaurantContainer";
+import UserPreferenceForm from "@modules/user-preference/UserPreferenceForm";
 
 const AppRouter = () => {
 
@@ -24,6 +25,7 @@ const AppRouter = () => {
     return (
         <Switch>
             <PrivateRoute path={'/'} exact={true} component={RestaurantContainer} />
+            <PrivateRoute path={'/user-preference'} component={UserPreferenceForm} />
         </Switch>
     );
 };

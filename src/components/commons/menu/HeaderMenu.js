@@ -1,13 +1,17 @@
 import React from "react";
 import {Menu} from "antd";
 import {useStoreActions} from "easy-peasy";
+import {HomeOutlined, SettingOutlined} from "@ant-design/icons";
+import {withRouter} from "react-router";
 
-const HeaderMenu = () => {
+const HeaderMenu = ({ history }) => {
 
     const {removeToken} = useStoreActions(state => state.loginModel);
 
     const actionByKey = {
-        'logout': removeToken
+        'logout': removeToken,
+        'home': () => history.push('/'),
+        'user-preference': () => history.push('/user-preference'),
     };
 
     const onClick = (item) => {
@@ -17,10 +21,12 @@ const HeaderMenu = () => {
 
     return (
         <Menu mode={'horizontal'} theme={'dark'} onClick={onClick} className={'header-menu'}>
+            <Menu.Item key={'home'}><HomeOutlined /> Home</Menu.Item>
+            <Menu.Item key={'user-preference'}><SettingOutlined /> User Preference</Menu.Item>
             <Menu.Item key={'logout'}>Logout</Menu.Item>
         </Menu>
     )
 
 };
 
-export default HeaderMenu;
+export default withRouter(HeaderMenu);
