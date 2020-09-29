@@ -20,7 +20,7 @@ const RestaurantContainer = () => {
             .then(result => setDataset(result.data))
             .catch(error => {
                 console.error(error);
-                showErrorNotification('Error on Load Restaurants', 'Please try again');
+                showErrorNotification('Error on Load Restaurants');
             });
     }, []);
 
