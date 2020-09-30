@@ -11,6 +11,7 @@ module.exports = {
                 aliases: {
                     "@commons": "./src/components/commons/",
                     "@modules": "./src/components/modules/",
+                    "@utils": "./src/util/",
 
                 }
             }

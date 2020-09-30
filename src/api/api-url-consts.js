@@ -4,3 +4,5 @@ export const TOKEN_URL = BACKEND_URL + '/token/';
 
 export const RECOMMEND_URL = '/recommend';
 export const USER_PREFERENCE_URL = '/user-preference/';
+export const TYPE_RESTAURANT_URL = '/type-restaurant';
+export const TYPE_ORDER_URL = '/type-order';

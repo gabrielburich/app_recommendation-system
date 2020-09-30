@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Button, Col, Form, InputNumber, Row} from "antd";
 import {getData, putData} from "../../../api/api";
 import {USER_PREFERENCE_URL} from "../../../api/api-url-consts";
-import {showErrorNotification, showSuccessNotification} from "../../../util/notifications";
+import {showErrorNotification, showSuccessNotification} from "@utils/notifications";
 import {getUserFromToken} from "../../../store/models/loginModel";
 import {useStoreState} from "easy-peasy";
 
@@ -50,10 +50,6 @@ const UserPreferenceForm = () => {
         wrapperCol: { span: 24 },
     };
 
-    const inputStyle = {
-        style: {width: '100%'}
-    }
-
     return (
         <>
             {initialValues !== null && (
@@ -63,11 +59,11 @@ const UserPreferenceForm = () => {
                             <h3>Weight</h3>
 
                             <Form.Item name={'orderTimeWeight'} label={'Order Time Weight'} rules={rules['orderTimeWeight']}>
-                                <InputNumber {...inputStyle } {...weightInputProps} />
+                                <InputNumber className={'full-width'} {...weightInputProps} />
                             </Form.Item>
 
                             <Form.Item name={'distanceWeight'} label={'Distance Weight'} rules={rules['distanceWeight']}>
-                                <InputNumber {...inputStyle } {...inputStyle } {...weightInputProps} />
+                                <InputNumber className={'full-width'} {...weightInputProps} />
                             </Form.Item>
                         </Col>
 
@@ -75,11 +71,11 @@ const UserPreferenceForm = () => {
                             <h3>Tolerances</h3>
 
                             <Form.Item name={'orderTimeTolerance'} label={'Order Time Tolerance'} rules={rules['orderTimeTolerance']}>
-                                <InputNumber {...inputStyle } />
+                                <InputNumber className={'full-width'} />
                             </Form.Item>
 
                             <Form.Item name={'distanceTolerance'} label={'Distance Tolerance'} rules={rules['distanceTolerance']}>
-                                <InputNumber {...inputStyle } />
+                                <InputNumber className={'full-width'} />
                             </Form.Item>
                         </Col>
                     </Row>
