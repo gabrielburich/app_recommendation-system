@@ -1,35 +1,40 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Button, Col, Form, InputNumber, Row} from "antd";
-import {getData} from "../../../api/api";
+import {getData, putData} from "../../../api/api";
 import {USER_PREFERENCE_URL} from "../../../api/api-url-consts";
-import {showErrorNotification} from "../../../util/notifications";
+import {showErrorNotification, showSuccessNotification} from "../../../util/notifications";
 import {getUserFromToken} from "../../../store/models/loginModel";
 import {useStoreState} from "easy-peasy";
 
 const UserPreferenceForm = () => {
 
     const formRef = useRef();
-    const [initialValues, setInitialValues] = useState(null);
-
     const token = useStoreState(state => state.loginModel.token);
 
+    const [initialValues, setInitialValues] = useState(null);
+    const [loggedUser] = useState(getUserFromToken(token));
+
     useEffect(() => {
-        const loggedUser = getUserFromToken(token);
         getData(USER_PREFERENCE_URL + loggedUser.id)
             .then(result => setInitialValues(result.data))
             .catch(error => {
                 console.error(error);
                 showErrorNotification('Error on Load User Preferences');
             });
-    }, [token]);
+    }, [token, loggedUser]);
 
     const handleSubmit = (formValues) => {
-
+        putData(USER_PREFERENCE_URL, loggedUser.id, formValues)
+            .then(() => {
+                showSuccessNotification('User Preference updated');
+            })
+            .catch(error => {
+                console.error(error);
+                showErrorNotification('Error on Save User Preferences');
+            });
     }
 
-    const handleReset = () => {
-        formRef.current.resetFields();
-    }
+    const handleReset = () => formRef.current.resetFields();
 
     const rules = {
         'orderTimeWeight': [{required: true}],
@@ -37,6 +42,8 @@ const UserPreferenceForm = () => {
         'distanceWeight': [{required: true}],
         'distanceTolerance': [{required: true}],
     };
+
+    const weightInputProps = {step: 0.1, min: 0.1, max: 0.9}
 
     const layout = {
         labelCol: { span: 24 },
@@ -50,35 +57,35 @@ const UserPreferenceForm = () => {
     return (
         <>
             {initialValues !== null && (
-                <Form {...layout} ref={formRef} initialValues={initialValues} name="control-ref" onFinish={handleSubmit}>
+                <Form {...layout} ref={formRef} initialValues={initialValues} onFinish={handleSubmit}>
                     <Row gutter={32}>
                         <Col span={6}>
                             <h3>Weight</h3>
 
-                            <Form.Item name="orderTimeWeight" label="Order Time Weight" rules={rules['orderTimeWeight']}>
-                                <InputNumber {...inputStyle } />
+                            <Form.Item name={'orderTimeWeight'} label={'Order Time Weight'} rules={rules['orderTimeWeight']}>
+                                <InputNumber {...inputStyle } {...weightInputProps} />
                             </Form.Item>
 
-                            <Form.Item name="distanceWeight" label="Distance Weight" rules={rules['distanceWeight']}>
-                                <InputNumber {...inputStyle } />
+                            <Form.Item name={'distanceWeight'} label={'Distance Weight'} rules={rules['distanceWeight']}>
+                                <InputNumber {...inputStyle } {...inputStyle } {...weightInputProps} />
                             </Form.Item>
                         </Col>
 
                         <Col span={6}>
                             <h3>Tolerances</h3>
 
-                            <Form.Item name="orderTimeTolerance" label="Order Time Tolerance" rules={rules['orderTimeTolerance']}>
+                            <Form.Item name={'orderTimeTolerance'} label={'Order Time Tolerance'} rules={rules['orderTimeTolerance']}>
                                 <InputNumber {...inputStyle } />
                             </Form.Item>
 
-                            <Form.Item name="distanceTolerance" label="Distance Tolerance" rules={rules['distanceTolerance']}>
+                            <Form.Item name={'distanceTolerance'} label={'Distance Tolerance'} rules={rules['distanceTolerance']}>
                                 <InputNumber {...inputStyle } />
                             </Form.Item>
                         </Col>
                     </Row>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">
+                        <Button htmlType={'submit'} type={'primary'} className={'mr-10'}>
                             Submit
                         </Button>
                         <Button htmlType="button" onClick={handleReset}>
