@@ -24,6 +24,7 @@ const RestaurantContainer = () => {
     const [dataset, setDataset] = useState([]);
     const [detailItem, setDetailItem] = useState([]);
     const [visualization, setVisualization] = useState(LIST);
+    const [filter, setFilter] = useState(initialFilter);
 
     const toggleVisualization = () => setVisualization((visualization) => (visualization === LIST ? DETAIL : LIST));
 
@@ -47,6 +48,11 @@ const RestaurantContainer = () => {
         toggleVisualization();
     };
 
+    const handleFilter = (filterValues) => {
+        setFilter(filterValues);
+        getDataset(filterValues);
+    };
+
     const handleBuy = (restaurantId, meal) => {};
 
     useEffect(() => {
@@ -56,7 +62,7 @@ const RestaurantContainer = () => {
     return (
         <Row gutter={32}>
             <Col span={6}>
-                <RestaurantFilter initialFilter={initialFilter} onFilter={getDataset} />
+                <RestaurantFilter filter={filter} onFilter={handleFilter} />
             </Col>
             <Col span={18}>
                 {visualization === LIST ? (

@@ -4,7 +4,7 @@ import { getData } from '@api/api';
 import { TYPE_ORDER_URL, TYPE_RESTAURANT_URL } from '@api/api-url-consts';
 import { firstLetterUpper } from '@utils';
 
-const RestaurantFilter = ({ initialFilter, onFilter }) => {
+const RestaurantFilter = ({ filter, onFilter }) => {
     const [restaurantTypes, setRestaurantTypes] = useState([]);
     const [orderTypes, setOrderTypes] = useState([]);
 
@@ -26,7 +26,7 @@ const RestaurantFilter = ({ initialFilter, onFilter }) => {
 
     return (
         <Card title={'Filter'}>
-            <Form layout={'horizontal'} initialValues={initialFilter} onFinish={onFilter}>
+            <Form layout={'horizontal'} initialValues={filter} onFinish={onFilter}>
                 <Form.Item name={'pageSize'} label={'Register Quantity'} wrapperCol={24} {...itemLayout}>
                     <InputNumber className={'full-width'} min={1} />
                 </Form.Item>
