@@ -1,12 +1,11 @@
-import {action, thunk} from "easy-peasy";
-import axios from "axios";
-import {TOKEN_URL} from "../../api/api-url-consts";
+import { action, thunk } from 'easy-peasy';
+import axios from 'axios';
+import { TOKEN_URL } from '../../api/api-url-consts';
 import * as jwt from 'jsonwebtoken';
 
 export const getUserFromToken = (token) => jwt.decode(token, (err, decode) => (decode !== undefined ? decode : err));
 
 export const loginModel = {
-
     token: sessionStorage.getItem('1') || '',
 
     doLogin: thunk(async (actions, payload) => {
@@ -22,6 +21,5 @@ export const loginModel = {
     removeToken: action((state) => {
         state.token = '';
         sessionStorage.setItem('1', '');
-    })
-
+    }),
 };

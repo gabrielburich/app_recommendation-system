@@ -1,26 +1,25 @@
-import React from "react";
-import {useStoreActions} from "easy-peasy";
-import {withRouter} from "react-router";
-import {Button, Card, Col, Form, Row} from "antd";
-import Input from "antd/es/input";
-import {showErrorNotification} from "../../../util/notifications";
+import React from 'react';
+import { useStoreActions } from 'easy-peasy';
+import { withRouter } from 'react-router';
+import { Button, Card, Col, Form, Row } from 'antd';
+import Input from 'antd/es/input';
+import { showErrorNotification } from '../../../util/notifications';
 
-const LoginContainer = ({history}) => {
-
-    const {doLogin} = useStoreActions(state => state.loginModel);
+const LoginContainer = ({ history }) => {
+    const { doLogin } = useStoreActions((state) => state.loginModel);
 
     const handleLogin = (formValues) => {
         doLogin(formValues)
             .then(() => history.push('/'))
-            .catch(error => {
+            .catch((error) => {
                 console.error(error);
-                showErrorNotification('Invalid Login')
+                showErrorNotification('Invalid Login');
             });
     };
 
     const rules = {
-        'email': [{required: true, message: 'Please input your e-mail!'}],
-        'password': [{ required: true, message: 'Please input your password!' }]
+        email: [{ required: true, message: 'Please input your e-mail!' }],
+        password: [{ required: true, message: 'Please input your password!' }],
     };
 
     const layout = {
@@ -50,8 +49,7 @@ const LoginContainer = ({history}) => {
                 </Card>
             </Col>
         </Row>
-    )
-
+    );
 };
 
 export default withRouter(LoginContainer);

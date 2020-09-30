@@ -1,13 +1,12 @@
 import React from 'react';
-import {Layout} from "antd";
-import AppRouter from "./router/AppRouter";
+import { Layout } from 'antd';
+import AppRouter from './router/AppRouter';
 
-import HeaderMenu from "@commons/menu/HeaderMenu";
+import HeaderMenu from '@commons/menu/HeaderMenu';
 
-const {Header, Content} = Layout;
+const { Header, Content } = Layout;
 
 const App = () => {
-
     return (
         <Layout className={'app'}>
             <Header>

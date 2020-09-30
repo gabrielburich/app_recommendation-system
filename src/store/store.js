@@ -1,7 +1,7 @@
-import {createStore} from "easy-peasy";
+import { createStore } from 'easy-peasy';
 
-import {loginModel} from "./models/loginModel";
+import { loginModel } from './models/loginModel';
 
-const storeModel = {loginModel};
+const storeModel = { loginModel };
 
 export const store = createStore(storeModel);
