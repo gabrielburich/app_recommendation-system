@@ -3,7 +3,7 @@ import { useStoreActions } from 'easy-peasy';
 import { withRouter } from 'react-router';
 import { Button, Card, Col, Form, Row } from 'antd';
 import Input from 'antd/es/input';
-import { showErrorNotification } from '../../../util/notifications';
+import { showErrorNotification } from '@utils/notifications';
 
 const LoginContainer = ({ history }) => {
     const { doLogin } = useStoreActions((state) => state.loginModel);

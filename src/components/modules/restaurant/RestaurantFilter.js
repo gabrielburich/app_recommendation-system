@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Checkbox, Form, InputNumber, Select } from 'antd';
-import { getData } from '../../../api/api';
-import { TYPE_ORDER_URL, TYPE_RESTAURANT_URL } from '../../../api/api-url-consts';
+import { getData } from '@api/api';
+import { TYPE_ORDER_URL, TYPE_RESTAURANT_URL } from '@api/api-url-consts';
 import { firstLetterUpper } from '@utils';
 
 const RestaurantFilter = ({ initialFilter, onFilter }) => {

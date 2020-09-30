@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getData } from '../../../api/api';
-import { RECOMMEND_URL } from '../../../api/api-url-consts';
-import { showErrorNotification } from '@utils/notifications';
 import { Col, Row } from 'antd';
+import { getData } from '@api/api';
+import { RECOMMEND_URL } from '@api/api-url-consts';
+import { showErrorNotification } from '@utils/notifications';
 
 import RestaurantList from './RestaurantList';
 import RestaurantDetail from './RestaurantDetail';

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Divider, Descriptions, List, Modal, PageHeader, Row } from 'antd';
-import { getData } from '../../../api/api';
-import { RESTAURANT_URL } from '../../../api/api-url-consts';
-import { showErrorNotification } from '../../../util/notifications';
+import { getData } from '@api/api';
+import { RESTAURANT_URL } from '@api/api-url-consts';
+import { showErrorNotification } from '@utils/notifications';
 
 const ListItem = List.Item;
 const ItemMeta = List.Item.Meta;

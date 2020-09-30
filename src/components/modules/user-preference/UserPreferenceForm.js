@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button, Col, Form, InputNumber, Row } from 'antd';
-import { getData, putData } from '../../../api/api';
-import { USER_PREFERENCE_URL } from '../../../api/api-url-consts';
+import { getData, putData } from '@api/api';
+import { USER_PREFERENCE_URL } from '@api/api-url-consts';
 import { showErrorNotification, showSuccessNotification } from '@utils/notifications';
 import { getUserFromToken } from '../../../store/models/loginModel';
 import { useStoreState } from 'easy-peasy';
