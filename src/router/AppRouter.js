@@ -4,6 +4,7 @@ import { useStoreState } from 'easy-peasy';
 
 import RestaurantContainer from '@modules/restaurant/RestaurantContainer';
 import UserPreferenceForm from '@modules/user-preference/UserPreferenceForm';
+import OrderList from '../components/modules/order/OrderList';
 
 const AppRouter = () => {
     const { token } = useStoreState((state) => state.loginModel);
@@ -27,6 +28,7 @@ const AppRouter = () => {
         <Switch>
             <PrivateRoute path={'/'} exact={true} component={RestaurantContainer} />
             <PrivateRoute path={'/user-preference'} component={UserPreferenceForm} />
+            <PrivateRoute path={'/order'} component={OrderList} />
         </Switch>
     );
 };

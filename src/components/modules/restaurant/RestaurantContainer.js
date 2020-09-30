@@ -7,6 +7,7 @@ import { showErrorNotification } from '@utils/notifications';
 import RestaurantList from './RestaurantList';
 import RestaurantDetail from './RestaurantDetail';
 import RestaurantFilter from './RestaurantFilter';
+import { useStoreActions } from 'easy-peasy';
 
 const RestaurantContainer = () => {
     const [LIST, DETAIL] = ['LIST', 'DETAIL'];
@@ -20,6 +21,8 @@ const RestaurantContainer = () => {
         typeOrderId: 1,
         sitPlace: false,
     };
+
+    const addOrder = useStoreActions((actions) => actions.orderModel.addOrder);
 
     const [dataset, setDataset] = useState([]);
     const [detailItem, setDetailItem] = useState([]);
@@ -53,7 +56,7 @@ const RestaurantContainer = () => {
         getDataset(filterValues);
     };
 
-    const handleBuy = (restaurantId, meal) => {};
+    const handleBuy = (restaurantId, meal) => addOrder({ restaurantId, meal, filter });
 
     useEffect(() => {
         getDataset();

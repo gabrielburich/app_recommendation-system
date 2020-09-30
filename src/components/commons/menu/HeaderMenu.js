@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from 'antd';
 import { useStoreActions } from 'easy-peasy';
-import { HomeOutlined, SettingOutlined } from '@ant-design/icons';
+import { HomeOutlined, OrderedListOutlined, SettingOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router';
 
 const HeaderMenu = ({ history }) => {
@@ -11,6 +11,7 @@ const HeaderMenu = ({ history }) => {
         logout: removeToken,
         home: () => history.push('/'),
         'user-preference': () => history.push('/user-preference'),
+        order: () => history.push('/order'),
     };
 
     const onClick = (item) => {
@@ -22,6 +23,9 @@ const HeaderMenu = ({ history }) => {
         <Menu mode={'horizontal'} theme={'dark'} onClick={onClick} className={'header-menu'}>
             <Menu.Item key={'home'}>
                 <HomeOutlined /> Home
+            </Menu.Item>
+            <Menu.Item key={'order'}>
+                <OrderedListOutlined /> Orders
             </Menu.Item>
             <Menu.Item key={'user-preference'}>
                 <SettingOutlined /> User Preference
