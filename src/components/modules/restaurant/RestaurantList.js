@@ -12,7 +12,7 @@ const RestaurantList = ({dataset, handleDetail}) => {
         </ListItem>
     );
 
-    return <List dataSource={dataset} renderItem={renderItem}/>;
+    return <List className={'app-list'} dataSource={dataset} renderItem={renderItem}/>;
 
 };
 
