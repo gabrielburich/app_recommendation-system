@@ -7,3 +7,4 @@ export const USER_PREFERENCE_URL = '/user-preference/';
 export const TYPE_RESTAURANT_URL = '/type-restaurant';
 export const TYPE_ORDER_URL = '/type-order';
 export const RESTAURANT_URL = '/restaurant/';
+export const ORDER_URL = '/order';
